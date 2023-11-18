@@ -1,0 +1,10 @@
+art/migrations
+db.sqlite3
+gallery/settings.py
+log
+media
+venv
+*.log
+*.pot
+*.pyc
+__pycache__

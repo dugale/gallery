@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block contents %}
+{% if alert %}
+    {% if alert == 'success' %}
+<div class="alert alert-success" role="alert">
+    Thank you for subscribing!
+</div>
+    {% elif alert == 'fail' %}
+<div class="alert alert-danger" role="alert">
+    There was an error submitting your request
+</div>
+    {% endif %}
+{% endif %}
+{% if form %}
+<form action="{{ request.path }}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+{% endif %}
+{% endblock %}

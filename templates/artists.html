@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block contents %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Artists</h1>
+            </div>
+        </div>
+        <div class="row row-cols-4">
+            {% for artist in artists %}
+            <div class="col"> 
+                {% if artist.thumbnail %}
+                <img src="{{ MEDIA_URL }}{{ artist.thumbnail.thumbnail }}" class="img-responsive" alt="{{ artist.thumbnail.name }}"/>
+                {% endif %}
+                {{ artist.name }}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}
