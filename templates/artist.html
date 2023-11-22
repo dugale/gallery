@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block contents %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>{{ artist.name }}</h1>
+            </div>
+        </div>
+        {% if art|length == 1 %}
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <figure class="figure">
+                        <img src="{{ MEDIA_URL }}{{ art.0.image }}" class="figure-img img-fluid" alt="{{ art.0.name }}" />
+                        <figcaption class="figure-caption">
+                            {{ art.0.name }}
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="row row-cols-4">
+            {% for a in art %}
+            <div class="col">
+                <figure class="figure">
+                    <img src="{{ MEDIA_URL }}{{ a.thumbnail }}" class="figure-img img-fluid" alt="{{ a.name }}" data-bs-toggle="modal" data-bs-target="#art{{ a.ArtID }}" />
+                    <figcaption class="figure-caption">
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#art{{ a.ArtID }}">{{ a.name }}</a>
+                    </figcaption>
+                </figure>
+            </div>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+    {% for a in art %}
+    <div class="modal fade" id="art{{ a.ArtID }}" tabindex="-1" aria-labelledby="art{{ a.ArtID }}Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ MEDIA_URL }}{{ a.image }}" class="img-fluid mx-auto d-block" alt="{{ a.name }}" />
+                    {{ a.name }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}

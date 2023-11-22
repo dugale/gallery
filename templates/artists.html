@@ -11,9 +11,9 @@
             {% for artist in artists %}
             <div class="col"> 
                 {% if artist.thumbnail %}
-                <img src="{{ MEDIA_URL }}{{ artist.thumbnail.thumbnail }}" class="img-responsive" alt="{{ artist.thumbnail.name }}"/>
+                <a href="{% url 'artists' %}/{{ artist.slug }}"><img src="{{ MEDIA_URL }}{{ artist.thumbnail.thumbnail }}" class="img-responsive" alt="{{ artist.thumbnail.name }}" /></a>
                 {% endif %}
-                {{ artist.name }}
+                <a href="{% url 'artists' %}/{{ artist.slug }}" class="text-decoration-none">{{ artist.name }}</a>
             </div>
             {% endfor %}
         </div>

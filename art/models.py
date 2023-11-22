@@ -8,7 +8,12 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 # Create your models here.
 class Artist(models.Model):
     ArtistID = models.AutoField(primary_key = True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
+    slug = models.CharField(max_length=100, blank=True, null=True, unique=True)
+
+    def save(self, **kwargs):
+        self.slug = self.slug if self.slug else self.name.replace(" ", "-").lower()
+        super(Artist, self).save()
     
     def thumbnail(self):
         try:

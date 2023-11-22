@@ -1,12 +1,23 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.template import loader
 from .forms import ContactForm, SubscriberForm
-from .models import Artist, Contact, Subscriber
+from .models import Art, Artist, Contact, Subscriber
 
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
+
+def artist(request, slug):
+    # lookup artist by slug
+    try:
+        artist = Artist.objects.get(slug__exact=slug)
+        # get art
+        art = Art.objects.filter(ArtistID_id=artist.ArtistID)
+        return render(request, 'artist.html', {'art': art, 'artist': artist})
+    except:
+        # return 404
+        return HttpResponseNotFound('<h1>Page Not Found</h1>')
 
 def artists(request):
     artists = Artist.objects.all();

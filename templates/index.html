@@ -1,4 +1,17 @@
 {% extends "base.html" %}
+{% block title %}Gallery{% endblock %}
 {% block contents %}
-<h1>Home</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="text-center">
+                {% load static %}
+                <img src="{% static 'logo.jpg' %}" alt="Gallery" />
+            </div>
+            <p class="lead">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nisi mauris, convallis at commodo id, interdum porttitor elit. Sed elit eros, pulvinar in justo vitae, semper elementum lorem. Curabitur vitae aliquet nibh. Integer fermentum luctus est id elementum. Aenean placerat lorem consequat mattis ultrices. Aenean a finibus dui. Curabitur dui orci, ultricies quis scelerisque quis, ornare ut leo. Nam tempor tortor sit amet ex placerat, nec volutpat mi venenatis. Aenean malesuada viverra nunc. Integer felis erat, pretium non magna in, mattis vulputate nunc. Nunc consectetur, odio sed iaculis semper, urna justo vulputate lorem, ornare fermentum lectus arcu et sapien. Donec volutpat accumsan lorem, sed feugiat odio molestie ac. Cras feugiat gravida pellentesque.
+            </p>
+        </div>
+    </div>
+</div>
 {% endblock %}

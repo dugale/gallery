@@ -3,6 +3,7 @@ db.sqlite3
 gallery/settings.py
 log
 media
+static
 venv
 *.log
 *.pot
