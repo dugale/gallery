@@ -4,6 +4,19 @@
     <div class="container">
         <div class="row">
             <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-decoration-none">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'artists' %}" class="text-decoration-none">Artists</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ artist.name }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
                 <h1>{{ artist.name }}</h1>
             </div>
         </div>

@@ -1,20 +1,43 @@
 {% extends "base.html" %}
+
 {% block contents %}
-{% if alert %}
-    {% if alert == 'success' %}
-<div class="alert alert-success" role="alert">
-    Thank you for contacting us!
-</div>
-    {% elif alert == 'fail' %}
-<div class="alert alert-danger" role="alert">
-    There was an error submitting your request
-</div>
-    {% endif %}
-{% endif %}
-{% if form %}
-<form action="{{ request.path }}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Submit</button>
-{% endif %}
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'index' %}" class="text-decoration-none">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1>Contact Us</h1>
+            {% if alert %}
+                {% if alert == 'success' %}
+                <div class="alert alert-success" role="alert">
+                    Thank you for contacting us!
+                </div>
+                {% elif alert == 'fail' %}
+                <div class="alert alert-danger" role="alert">
+                    There was an error submitting your request
+                </div>
+                {% endif %}
+            {% endif %}
+            {% if form %}
+                <form action="{{ request.path }}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}
