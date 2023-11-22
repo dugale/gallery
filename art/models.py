@@ -53,27 +53,6 @@ class Art(models.Model):
 
         self.thumbnail = InMemoryUploadedFile(output_thumb, 'ImageField', f"{img_name}_thumb.png", 'image/png', sys.getsizeof(output_thumb), None)
         super(Art, self).save()
-        '''
-        if not self.image:
-            self.thumbnail = None
-        else:
-            thumbnail_size = 250, 250
-            data_img = BytesIO()
-            self.image.open()
-            tiny_img = Image.open(self.image)
-            tiny_img.thumbnail(thumbnail_size)
-            tiny_img.save(data_img, format="BMP")
-            tiny_img.close()
-            try:
-                self.thumbnail = "data:image/jpg;base64,{}".format(
-                    base64.b64encode(data_img.getvalue()).decode("utf-8")
-                )
-            except UnicodeDecodeError as e:
-                self.blurred_image = None
-
-        super(Art, self).save(force_insert, force_update, using, update_fields)
-        '''
-    
 
 class Contact(models.Model):
     ContactID = models.AutoField(primary_key=True)
